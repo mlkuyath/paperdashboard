@@ -46,11 +46,8 @@ for(let i=0; i<6; i++) {
   }
 }
 for(let i=0; i<7; i++) {
-  xlabelsLast7Days[i] = new Date(today.getTime() - (7-(6*i))*DAY_LENGTH)
+  xlabelsLast7Days[i] = new Date(today.getTime() - (6-i)*DAY_LENGTH)
 }
-
-
-console.log(xlabelsLast90Days)
 
 export const dashboardLast180DaysChart = {
   data: {
@@ -110,7 +107,7 @@ export const dashboardLast90DaysChart = {
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero: true
+          suggestedMin: 0
         }
       }]
     },
@@ -152,6 +149,8 @@ export const dashboardLast30DaysChart = {
   },
 };
 
+console.log(viewsInPastWeek)
+
 export const dashboardLastWeekChart = {
   data: {
     labels: [
@@ -161,7 +160,7 @@ export const dashboardLastWeekChart = {
       xlabelsLast7Days[3].getMonth() + 1 + "/" + xlabelsLast7Days[3].getDate() ,
       xlabelsLast7Days[4].getMonth() + 1 + "/" + xlabelsLast7Days[4].getDate() ,
       xlabelsLast7Days[5].getMonth() + 1 + "/" + xlabelsLast7Days[5].getDate() ,
-      xlabelsLast7Days[6].getMonth() + 1 + "/" + (xlabelsLast7Days[6].getDate() + 1) ,
+      xlabelsLast7Days[6].getMonth() + 1 + "/" + xlabelsLast7Days[6].getDate() ,
     ],
     datasets: [
       {
@@ -177,6 +176,16 @@ export const dashboardLastWeekChart = {
     ],
   },
   options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 100,
+          stepSize: 5
+          
+        }
+      }]
+    },
     legend: {
       display: false,
       position: "top",
